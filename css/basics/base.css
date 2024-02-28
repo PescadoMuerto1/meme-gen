@@ -12,3 +12,6 @@ body {
     background-color: var(--clrPrimary);
 }
 
+main {
+    padding: 20px;
+}

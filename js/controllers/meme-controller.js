@@ -3,10 +3,11 @@
 let gElCanvas
 let gCtx
 
-function onInit() {
+function initCanvas() {
     gElCanvas = document.getElementById('my-canvas')
     gCtx = gElCanvas.getContext('2d')
 
+    showEl('.main-meme')
     resizeCanvas()
     renderMeme()
 }

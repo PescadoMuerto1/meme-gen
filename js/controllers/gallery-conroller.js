@@ -1,7 +1,5 @@
 'use strict'
 
-renderGallery()
-
 function renderGallery() {
     const elGallery = document.querySelector('.main-gallery')
     const imgs = getImgs()
@@ -12,5 +10,6 @@ function renderGallery() {
 
 function onImgSelect(elId) {
     setImg(elId)
-    renderMeme()
+    initCanvas()
+    hideEl('.main-gallery')
 }

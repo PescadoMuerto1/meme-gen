@@ -11,18 +11,45 @@
         <div class="logo"></div>
         <nav>
             <ul class="clean-list">
-                <li><a href="#">gallery</a></li>
+                <li><a onclick="onInit()" href="#">gallery</a></li>
                 <li><a href="#">local storage</a></li>
                 <li><a href="#">random</a></li>
             </ul>
         </nav>
     </header>
-    <main class="main-meme content-layout">
+    <main class="main-meme meme-layout hidden">
         <div class="canvas-container">
             <canvas class="main-canvas" id="my-canvas" height="400px" width="400px"></canvas>
         </div>
-        <section>
+        <section class="actions-container actions-layout">
             <input type="text" onkeyup="onChangeTxt(value)">
+
+            <div class="basic-actions">
+                <button class="moveBetween"></button>
+                <button class="addItem"></button>
+                <button class="delete"></button>
+            </div>
+
+            <div class="direct-actions">
+                <button class="inlarg">A+</button>
+                <button class="reduce">A-</button>
+                <button class="align-left"></button>
+                <button class="align-center"></button>
+                <button class="align-right"></button>
+                <select name="txt-font" id="txt-font">
+                    <option value="">Please choose a font</option>
+                </select>
+                <button class="txt-underline">_</button>
+                <button class="color"></button>
+            </div>
+            
+            <select name="" id=""></select>
+
+            <div>
+                <button class="Share">Share</button>
+                <button class="Download">Download</button>
+            </div>
+            
         </section>     
     </main>
 
@@ -33,5 +60,7 @@
     <script src="js/services/meme.service.js"></script>
     <script src="js/controllers/gallery-conroller.js"></script>
     <script src="js/controllers/meme-controller.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 </html>

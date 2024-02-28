@@ -11,11 +11,20 @@
     grid-column: 1/-1;
 }
 
-.content-layout {
+.meme-layout {
     display: grid;
     grid-template-columns: 15px 1fr 10px 1fr 15px;
 }
 
-.content-layout .canvas-container {
+.meme-layout .canvas-container {
     grid-column: 2;
+}
+
+.meme-layout .actions-container {
+    grid-column: 4;
+}
+
+.actions-layout {
+    display: grid;
+    grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
 }
