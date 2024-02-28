@@ -45,6 +45,11 @@ function drawText(text, x = 250, y = 100) {
     gCtx.strokeText(text, x, y)
 }
 
+function onChangeTxt(txt) {
+    setLineTxt(txt, 0)
+    renderMeme()
+}
+
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
 
