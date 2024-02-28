@@ -5,49 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme gen</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/57223ba89b.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="main-layout" onload="onInit()">
-    <header class="main-header full">
-        <div class="logo"></div>
-        <nav>
-            <ul class="clean-list">
-                <li><a onclick="onInit()" href="#">gallery</a></li>
-                <li><a href="#">local storage</a></li>
-                <li><a href="#">random</a></li>
-            </ul>
-        </nav>
+    <header class="main-header full main-layout">
+        <div class="logo-and-nav flex space-between align-center">
+            <div class="logo">memeGen</div>
+            <nav class="main-nav">
+                <ul class="main-nav-list clean-list">
+                    <li><a class="active" onclick="onInit()" href="#">gallery</a></li>
+                    <li><a href="#">local storage</a></li>
+                    <li><a href="#">random</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main class="main-meme meme-layout hidden">
         <div class="canvas-container">
             <canvas class="main-canvas" id="my-canvas" height="400px" width="400px"></canvas>
         </div>
         <section class="actions-container actions-layout">
-            <input type="text" onkeyup="onChangeTxt(value)">
-
-            <div class="basic-actions">
-                <button class="moveBetween" onclick="onMoveBetweenLines()">move</button>
-                <button class="addLine" onclick="onAddNewLine()">+</button>
-                <button class="delete"></button>
+            <div class="txt-actions flex">
+                <input class="txt-input" type="text" onkeyup="onChangeTxt(value)">
+                <input type="color" onchange="onChangeStrokeColor(value, true)"></input>
+                <input type="color" onchange="onChangeFillColor(value, false)"></input>
             </div>
 
-            <div class="direct-actions">
-                <button class="inlarg" onclick="onChangeTxtSize(true)">A+</button>
-                <button class="reduce" onclick="onChangeTxtSize()">A-</button>
-                <button class="align-left"></button>
-                <button class="align-center"></button>
-                <button class="align-right"></button>
-                <select name="txt-font" id="txt-font">
-                    <option value="">Please choose a font</option>
-                </select>
-                <button class="txt-underline">_</button>
-                <input type="color" onchange="onChangeColor(value)"></input>
+            <div class="basic-actions flex align-center">
+                <button class="moveBetween" onclick="onMoveBetweenLines()">
+                    <img class="icon" src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="">
+                </button>
+                <button class="addLine" onclick="onAddNewLine()">
+                    <img class="icon" src="ICONS/add.png" alt="">
+                </button>
+                <button class="delete">
+                    <img class="icon" src="ICONS/trash.png" alt="">
+                </button>
+            </div>
+            
+            <select name="txt-font" class="txt-font">
+                <option value="">Please choose a font</option>
+            </select>
+
+            <div class="size-and-align-actions flex space-between"> 
+                <button class="inlarg" onclick="onChangeTxtSize(true)">
+                    <img class="icon" src="ICONS/increase font - icon.png" alt="">
+                </button>
+                <button class="reduce" onclick="onChangeTxtSize()">
+                    <img class="icon" src="ICONS/decrease font - icon.png" alt="">
+                </button>
+                <button class="align-left">
+                    <img class="icon" src="ICONS/align-to-left.png" alt="">
+                </button>
+                <button class="align-center">
+                    <img class="icon" src="ICONS/center-text-alignment.png" alt="">
+                </button>
+                <button class="align-right">
+                    <img class="icon" src="ICONS/align-to-right.png" alt="">
+                </button>
+            
             </div>
             
             <select name="" id=""></select>
 
-            <div>
-                <button class="Share">Share</button>
-                <a href="#" onclick="onDownloadCanvas(this)" download="file-name">Download</a>
+            <div class="share-and-import flex align-center">
+                <button class="Share"><i class="fa-solid fa-share"></i></button>
+                <button class="Download">
+                    <a href="#" onclick="onDownloadCanvas(this)" download="file-name"><i class="fa-solid fa-download"></i></a>
+                </button>
+                
             </div>
             
         </section>     

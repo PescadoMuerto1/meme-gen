@@ -71,10 +71,13 @@ function setImg(id) {
     gMeme.selectedImgId = id
 }
 
-function setLineColor(color) {
+function setLineFillColor(color) {
     const lineIdx = gMeme.selectedLineIdx
+    gMeme.lines[lineIdx].fillColor = color 
+}
 
-    gMeme.lines[lineIdx].fillColor = color
+function setLineStrokeColor(color) {
+    const lineIdx = gMeme.selectedLineIdx
     gMeme.lines[lineIdx].strokeColor = color
 }
 

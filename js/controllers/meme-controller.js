@@ -73,8 +73,13 @@ function onChangeTxt(txt) {
     renderMeme()
 }
 
-function onChangeColor(color) {
-    setLineColor(color)
+function onChangeFillColor(color) {
+    setLineFillColor(color)
+    renderMeme()
+}
+
+function onChangeStrokeColor(color) {
+    setLineStrokeColor(color)
     renderMeme()
 }
 

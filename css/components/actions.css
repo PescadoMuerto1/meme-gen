@@ -1,0 +1,44 @@
+.actions-container {
+    height: 71Vh;
+    gap: 1rem;
+}
+
+.actions-container .icon {
+    width: 60%;
+}
+
+.actions-container .txt-actions {
+    background-color:var(--clrPrimary);
+    place-self: center;
+    padding: 1em;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.actions-container input{
+    height: 2rem;
+    width: 2rem;
+    border: none;
+}
+
+.actions-container .txt-input {
+    flex-grow: 1;
+}
+
+.actions-container button {
+    height: 3.7rem;
+    width: 3.7rem;
+}
+
+.actions-container .basic-actions, .share-and-import {
+    justify-content: center;
+    gap: 1.3rem;
+}
+
+.actions-container select {
+    height: 3.5rem;
+}
+
+.actions-container i {
+    color: black;
+}
