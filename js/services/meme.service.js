@@ -11,7 +11,7 @@ var gMeme = {
             fillColor: 'red',
             strokeColor: 'red',
             pos: {
-                x: 250,
+                x: 0,
                 y: 50
             }
         },
@@ -21,7 +21,7 @@ var gMeme = {
             fillColor: 'white',
             strokeColor: 'white',
             pos: {
-                x: 250,
+                x: 0,
                 y: 400
             }
         }

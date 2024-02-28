@@ -10,6 +10,7 @@ function initCanvas() {
     showEl('.main-meme')
     resizeCanvas()
     renderMeme()
+    // addListeners()
 }
 
 function renderMeme() {
@@ -21,6 +22,7 @@ function renderMeme() {
     img.onload = () => {
         drawImage(img)
         meme.lines.forEach(line => drawText(line))
+        drawRectText(meme.lines[meme.selectedLineIdx])
     }
 
 }
@@ -39,11 +41,23 @@ function drawText({ txt, size, fillColor, strokeColor, pos }) {
     gCtx.fillStyle = fillColor
 
     gCtx.font = `${size}px Arial`
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
+    // gCtx.textAlign = 'center'
+    gCtx.textBaseline = 'hanging'
 
     gCtx.fillText(txt, pos.x, pos.y)
     gCtx.strokeText(txt, pos.x, pos.y)
+
+}
+
+function drawRectText(line) {
+    console.log(line)
+    const lineWidth = gCtx.measureText(line.txt).width
+    const lineHeight = line.size
+
+    gCtx.strokeStyle = 'black'
+
+    gCtx.strokeRect(line.pos.x, line.pos.y, lineWidth, lineHeight)
+    console.log(line.pos.x, line.pos.y, lineHeight, lineWidth);
 }
 
 function onChangeTxt(txt) {
@@ -81,7 +95,7 @@ function resizeCanvas() {
 }
 
 function addListeners() {
-    // window.addEventListener('resize', resizeCanvas)
+    window.addEventListener('resize', resizeCanvas)
 }
 
 function onDownloadCanvas(elLink) {
