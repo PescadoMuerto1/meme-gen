@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.grid {
+    display: grid;
+}
+
 .grid .justify-center {
     place-items: center;
 }
@@ -22,7 +26,6 @@
     list-style-type: none;
 }
   
-
 .hidden {
     display: none;
 }

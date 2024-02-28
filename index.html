@@ -13,17 +13,20 @@
         <div class="logo-and-nav flex space-between align-center">
             <div class="logo">memeGen</div>
             <nav class="main-nav">
+                <i class="fa-solid fa-x" onclick="onToggleMenu()"></i>
                 <ul class="main-nav-list clean-list">
                     <li><a class="active" onclick="onInit()" href="#">gallery</a></li>
                     <li><a href="#">local storage</a></li>
                     <li><a href="#">random</a></li>
                 </ul>
             </nav>
+            <i class="fa-solid fa-bars" onclick="onToggleMenu()"></i>
         </div>
     </header>
+
     <main class="main-meme meme-layout hidden">
         <div class="canvas-container">
-            <canvas class="main-canvas" id="my-canvas" height="400px" width="400px"></canvas>
+            <canvas class="main-canvas" id="my-canvas"></canvas>
         </div>
         <section class="actions-container actions-layout">
             <div class="txt-actions flex">
@@ -80,7 +83,7 @@
         </section>     
     </main>
 
-    <main class="main-gallery gallery-layout"></main>
+    <main class="main-gallery grid gallery-layout"></main>
     <footer></footer>
 
     <script src="js/services/util-service.js"></script>

@@ -101,9 +101,9 @@ function onMoveBetweenLines() {
 }
 
 function resizeCanvas() {
-    const elContainer = document.querySelector('.canvas-container')
+	const elContainer = document.querySelector('.canvas-container')
 
-    gElCanvas.width = elContainer.offsetWidth
+	gElCanvas.width = elContainer.clientWidth
 	gElCanvas.height = elContainer.offsetHeight
 }
 
@@ -187,4 +187,8 @@ function getEvPos(ev) {
 		}
 	}
 	return pos
+}
+
+function onToggleMenu() {
+    document.body.classList.toggle('menu-open')
 }

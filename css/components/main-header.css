@@ -10,7 +10,8 @@
     /* font-family: inconsolata, monospace; */
     font-size: 2.5em;
     letter-spacing: 0.2em;
-    padding-inline-start: 2rem;
+    padding-inline: 2rem;
+    padding-block: 1.5rem;
 }
 
 .main-header .main-nav-list {
