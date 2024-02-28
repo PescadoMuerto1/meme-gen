@@ -20,7 +20,7 @@ function renderMeme() {
 
     img.onload = () => {
         drawImage(img)
-        drawText(meme.lines[0].txt)
+        drawText(meme.lines[0])
     }
 
 }
@@ -31,24 +31,36 @@ function drawImage(img) {
 
 }
 
-function drawText(text, x = 250, y = 100) {
+function drawText(memeLines, x = 250, y = 100) {
 
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'white'
+    gCtx.strokeStyle = memeLines.strokeColor
 
-    gCtx.fillStyle = 'lightsteelblue'
+    gCtx.fillStyle = memeLines.fillColor
 
-    gCtx.font = '30px Arial'
+    gCtx.font = `${memeLines.size}px Arial`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
 
-    gCtx.fillText(text, x, y)
-    gCtx.strokeText(text, x, y)
+    gCtx.fillText(memeLines.txt, x, y)
+    gCtx.strokeText(memeLines.txt, x, y)
 }
 
 function onChangeTxt(txt) {
     setLineTxt(txt, 0)
     renderMeme()
+}
+
+function onChangeColor(color) {
+    setLineColor(color)
+    renderMeme()
+}
+
+function onChangeTxtSize(isIncrease) {
+    if(isIncrease) increaseLinesTxtSize()
+    else decreaseLinesTxtSize()
+    renderMeme()
+    return
 }
 
 function resizeCanvas() {
@@ -69,3 +81,4 @@ function onDownloadCanvas(elLink) {
     const dataUrl = gElCanvas.toDataURL()
     elLink.href = dataUrl
 }
+

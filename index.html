@@ -31,8 +31,8 @@
             </div>
 
             <div class="direct-actions">
-                <button class="inlarg">A+</button>
-                <button class="reduce">A-</button>
+                <button class="inlarg" onclick="onChangeTxtSize(true)">A+</button>
+                <button class="reduce" onclick="onChangeTxtSize()">A-</button>
                 <button class="align-left"></button>
                 <button class="align-center"></button>
                 <button class="align-right"></button>
@@ -40,7 +40,7 @@
                     <option value="">Please choose a font</option>
                 </select>
                 <button class="txt-underline">_</button>
-                <button class="color"></button>
+                <input type="color" onchange="onChangeColor(value)"></input>
             </div>
             
             <select name="" id=""></select>
