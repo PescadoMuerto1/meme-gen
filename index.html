@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme gen</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="main-layout" onload="onInit()">
+    <header class="main-header full">
+        <div class="logo"></div>
+        <nav>
+            <ul class="clean-list">
+                <li><a href="#">gallery</a></li>
+                <li><a href="#">local storage</a></li>
+                <li><a href="#">random</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-container content-layout">
+        <div class="canvas-container">
+            <canvas class="main-canvas" id="my-canvas" height="400px" width="400px"></canvas>
+        </div>
+        <section></section>     
+    </main>
+    <footer></footer>
+
+    <script src="js/services/util-service.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/controllers/gallery-conroller.js"></script>
+    <script src="js/controllers/meme-controller.js"></script>
+</body>
+</html>

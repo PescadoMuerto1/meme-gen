@@ -1,0 +1,21 @@
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1000px 1fr;
+}
+
+.main-layout>*:not(.full) {
+    grid-column: 2;
+}
+
+.main-layout>*.full {
+    grid-column: 1/-1;
+}
+
+.content-layout {
+    display: grid;
+    grid-template-columns: 15px 1fr 10px 1fr 15px;
+}
+
+.content-layout .canvas-container {
+    grid-column: 2;
+}

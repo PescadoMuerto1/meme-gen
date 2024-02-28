@@ -1,0 +1,14 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    /* font-family: lato, sans-serif; */
+    /* color: var(--clrPrimary); */
+    /* line-height: 1.25rem; */
+}
+
+body {
+    background-color: var(--clrPrimary);
+}
+

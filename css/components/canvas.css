@@ -1,0 +1,10 @@
+.main-canvas {
+    display: block;
+    border: 3px solid rgb(186, 22, 22);
+}
+
+.canvas-container {
+    width: 100%;
+    height: 100%;
+}
+
