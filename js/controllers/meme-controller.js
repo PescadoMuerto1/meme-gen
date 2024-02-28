@@ -98,8 +98,8 @@ function onMoveBetweenLines() {
 function resizeCanvas() {
     const elContainer = document.querySelector('.canvas-container')
 
-    gElCanvas.height = elContainer.clientHeight
-    gElCanvas.width = elContainer.clientWidth
+    gElCanvas.width = elContainer.offsetWidth
+	gElCanvas.height = elContainer.offsetHeight
 }
 
 function onDownloadCanvas(elLink) {

@@ -28,3 +28,8 @@
     display: grid;
     grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
 }
+
+.gallery-layout {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+}
