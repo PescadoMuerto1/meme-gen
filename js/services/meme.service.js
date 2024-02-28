@@ -4,10 +4,12 @@ var gImgs = [
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
+    isDrag: false,
     lines: [
         {
             txt: 'I sometimes eat Falafel',
             size: 30,
+            width: 0,
             fillColor: 'red',
             strokeColor: 'red',
             pos: {
@@ -18,6 +20,7 @@ var gMeme = {
         {
             txt: 'I dont like Falafel',
             size: 30,
+            width: 0,
             fillColor: 'white',
             strokeColor: 'white',
             pos: {
@@ -83,6 +86,14 @@ function addNewLine() {
     gMeme.lines.push(_addLine())
 }
 
+function isLineClicked(clickedPos) {
+
+	return gMeme.lines.findIndex(line => {
+        return clickedPos.x > line.pos.x && clickedPos.x < line.pos.x + line.width
+        && clickedPos.y > line.pos.y && clickedPos.y < line.pos.y + line.size
+    })
+}
+
 function _addLine(txt = 'write here', size = 30, fillColor = 'white', strokeColor = 'white', x = 100, y = 100) {
     return {
         txt,
@@ -94,4 +105,23 @@ function _addLine(txt = 'write here', size = 30, fillColor = 'white', strokeColo
             y
         }
     }
+}
+
+function setLineWidth(width, lineIdx) {
+    gMeme.lines[lineIdx].width = width
+}
+
+function setLineDrag(lineIdx, isDrag) {
+    gMeme.lines[lineIdx].isDrag = isDrag
+}
+
+function getLineDragged() {
+    return gMeme.lines.find(line => line.isDrag)
+}
+
+function moveLine(lineIdx, dx, dy) {
+	gMeme.lines[lineIdx].pos.x += dx
+	gMeme.lines[lineIdx].pos.y += dy
+
+    console.log(gMeme.lines[lineIdx].pos);
 }
