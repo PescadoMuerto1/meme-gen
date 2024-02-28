@@ -62,3 +62,10 @@ function addListeners() {
     // window.addEventListener('resize', resizeCanvas)
 }
 
+function onDownloadCanvas(elLink) {
+    
+    elLink.download = 'my-meme'
+
+    const dataUrl = gElCanvas.toDataURL()
+    elLink.href = dataUrl
+}
