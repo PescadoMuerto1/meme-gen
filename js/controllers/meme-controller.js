@@ -20,7 +20,7 @@ function renderMeme() {
 
     img.onload = () => {
         drawImage(img)
-        drawText(meme.lines[0])
+        meme.lines.forEach(line => drawText(line))
     }
 
 }
@@ -31,23 +31,23 @@ function drawImage(img) {
 
 }
 
-function drawText(memeLines, x = 250, y = 100) {
+function drawText({ txt, size, fillColor, strokeColor, pos }) {
 
     gCtx.lineWidth = 2
-    gCtx.strokeStyle = memeLines.strokeColor
+    gCtx.strokeStyle = strokeColor
 
-    gCtx.fillStyle = memeLines.fillColor
+    gCtx.fillStyle = fillColor
 
-    gCtx.font = `${memeLines.size}px Arial`
+    gCtx.font = `${size}px Arial`
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'middle'
 
-    gCtx.fillText(memeLines.txt, x, y)
-    gCtx.strokeText(memeLines.txt, x, y)
+    gCtx.fillText(txt, pos.x, pos.y)
+    gCtx.strokeText(txt, pos.x, pos.y)
 }
 
 function onChangeTxt(txt) {
-    setLineTxt(txt, 0)
+    setLineTxt(txt)
     renderMeme()
 }
 
@@ -61,6 +61,16 @@ function onChangeTxtSize(isIncrease) {
     else decreaseLinesTxtSize()
     renderMeme()
     return
+}
+
+function onAddNewLine() {
+    addNewLine()
+    renderMeme()
+}
+
+function onMoveBetweenLines() {
+    moveBetweenLines()
+    renderMeme()
 }
 
 function resizeCanvas() {
