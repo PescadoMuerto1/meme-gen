@@ -12,14 +12,14 @@ function onInit() {
 }
 
 function renderMeme() {
-    const imgSrc = getImg()
-    const txt = getMeme()
+    const meme = getMeme()
+    const imgSrc = getImgById(meme.selectedImgId)
     const img = new Image()
     img.src = imgSrc
 
     img.onload = () => {
         drawImage(img)
-        drawText(txt)
+        drawText(meme.lines[0].txt)
     }
 
 }
