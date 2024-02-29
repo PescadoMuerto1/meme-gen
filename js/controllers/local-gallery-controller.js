@@ -2,6 +2,9 @@
 
 function onInitLocal() {
     const memes = loadFromStorage('memes')
+    if (!memes) {
+        saveToStorage('memes', [gMeme])
+    }
     renderLocalGallery()
     showEl('.local-gallery')
     hideEl('.main-gallery-container')
