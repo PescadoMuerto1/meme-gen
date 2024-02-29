@@ -39,10 +39,10 @@
 .main-gallery-container header{
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 0.5fr;
 }
 
-.main-gallery-container header input {
+.main-gallery-container header .input-list {
   height: 3rem;
   width: 70%;
   border-radius: 3rem;
@@ -64,4 +64,12 @@
 
 .main-gallery-container header .search-btn img{
   width: 80%;
+}
+
+.main-gallery-container header .upload{
+  background-color: var(--clrPrimary-2);
+  height: 3rem;
+  border-radius: 3rem;
+  width: 80%;
+  justify-self: end;
 }

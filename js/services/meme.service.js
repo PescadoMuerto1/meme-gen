@@ -207,6 +207,10 @@ function filterGallery(keyWord) {
     return gImgs.filter(img => img.keywords.includes(keyWord.toLowerCase()))
 }
 
+function addImg(img) {
+    gImgs.unshift(_addImg(img))
+}
+
 function _addLine(txt = 'text here', size = 30, fillColor = 'white', strokeColor = 'black', x = 100, y = 100, font = 'Impact') {
     return {
         txt,
@@ -231,4 +235,10 @@ function _addStickerLine(sticker) {
             y: 50
         }
     }
+}
+
+function _addImg(url){
+    console.log(url);
+
+    return { id: getRandomInt(500,1000), url, keywords: ['funny', 'cat'] }
 }

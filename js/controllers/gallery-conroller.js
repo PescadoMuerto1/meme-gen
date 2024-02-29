@@ -48,3 +48,21 @@ function onRandomMeme() {
     hideEl('.main-gallery-container')
     hideEl('.local-gallery')
 }
+
+function onAddImg(ev) {
+    loadImageFromInput(ev,addImg)
+}
+
+function loadImageFromInput(ev,onImageReady) {
+    const reader = new FileReader()
+
+    reader.onload = ev => {
+        let img = new Image() 
+        img.src = ev.target.result 
+        img.onload = () => {
+            onImageReady(img.src)
+            renderGallery()
+        }
+    }
+    reader.readAsDataURL(ev.target.files[0]) 
+}
