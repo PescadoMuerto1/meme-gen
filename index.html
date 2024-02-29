@@ -92,7 +92,24 @@
         </section>     
     </main>
 
-    <main class="main-gallery grid gallery-layout"></main>
+    <section class="main-gallery-container grid">
+        <header class="search">
+
+            <form onsubmit="onFilterGallery()" class="flex align-center">
+                <input class="input-list" list="search-list" placeholder="Search" required>
+                <datalist id="search-list"></datalist>
+                <button type="submit" class="search-btn">
+                    <img src="ICONS/search-icon.png" alt="">
+                </button>
+            </form>
+            <div class="most-searched"></div>
+
+        </header>
+
+        <main class="main-gallery grid gallery-layout">
+        </main>
+
+    </section>
     <main class="local-gallery grid gallery-layout"></main>
     <footer></footer>
 

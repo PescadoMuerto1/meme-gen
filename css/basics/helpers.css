@@ -11,11 +11,15 @@
     align-items: center;
 }
 
+.flex.justify-center {
+    justify-content: center;
+}
+
 .grid {
     display: grid;
 }
 
-.grid .justify-center {
+.grid .place-center {
     place-items: center;
 }
 

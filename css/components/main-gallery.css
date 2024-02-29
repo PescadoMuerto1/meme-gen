@@ -1,6 +1,13 @@
-.main-gallery ,.local-gallery{
+.main-gallery-container{
+  gap: 2rem;
   width: 100%;
+  background-color: var(--clrPrimary1);
+  padding: 3rem;
+}
+
+.main-gallery, .local-gallery {
   gap: 14px;
+
 }
 
 .main-gallery img ,.local-gallery img{
@@ -27,4 +34,34 @@
   padding: 0.8rem;
   place-self: center;
   border: 1px solid black;
+}
+
+.main-gallery-container header{
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr;
+}
+
+.main-gallery-container header input {
+  height: 3rem;
+  width: 70%;
+  border-radius: 3rem;
+  background-color: var(--clrPrimary-2);
+}
+
+.main-gallery-container header .most-searched {
+  height: 3rem;
+  border-radius: 3rem;
+  background-color: var(--clrPrimary-2);
+}
+
+.main-gallery-container header .search-btn{
+  width: 2.8rem;
+  height: 2.8rem;
+  background-color: transparent;
+  margin-inline-start: 0.5rem;
+}
+
+.main-gallery-container header .search-btn img{
+  width: 80%;
 }

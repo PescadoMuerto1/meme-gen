@@ -4,7 +4,7 @@ function onInitLocal() {
     const memes = loadFromStorage('memes')
     renderLocalGallery()
     showEl('.local-gallery')
-    hideEl('.main-gallery')
+    hideEl('.main-gallery-container')
     hideEl('.main-meme')
 }
 
