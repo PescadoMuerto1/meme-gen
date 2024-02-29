@@ -1,8 +1,10 @@
 .main-header {
+    margin: 0.5rem;
     background-color: var(--clrSecondary);
     color: var(--primary-4);
     border-radius: 3em;
     margin-block-end: 2rem;
+    padding-inline: 3rem;
 }
 
 .logo {

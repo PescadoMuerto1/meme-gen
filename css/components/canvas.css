@@ -1,7 +1,5 @@
 .main-canvas {
     display: block;
     border: 3px solid var(--clrPrimary);
+    width: 100%;
 }
-
-
-

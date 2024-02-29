@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
     <title>Meme gen</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://kit.fontawesome.com/57223ba89b.js" crossorigin="anonymous"></script>
@@ -111,8 +111,11 @@
                     <img src="ICONS/search-icon.png" alt="">
                 </button>
             </form>
-            <div class="most-searched"></div>
-            <button class="upload"><input type="file" name="image" onchange="onAddImg(event)" accept="image/*" /></button>
+            <!-- <div class="most-searched"></div> -->
+            <label class="upload" for="file">
+                <input type="file" name="image" id="file" onchange="onAddImg(event)" accept="image/*" class="hidden" />
+                <i class="fa-solid fa-upload"></i>
+            </label>
 
         </header>
 
