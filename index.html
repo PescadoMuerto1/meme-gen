@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +47,7 @@
                     <img class="icon" src="ICONS/trash.png" alt="">
                 </button>
             </div>
-            
+
             <select name="txt-font" class="txt-font" onchange="OnSelectFont(value)">
                 <option value="Impact">Impact</option>
                 <option value="Ruluko">Ruluko</option>
@@ -55,7 +56,7 @@
                 <option value="Kalam">Kalam</option>
             </select>
 
-            <div class="size-and-align-actions flex space-between"> 
+            <div class="size-and-align-actions flex space-between">
                 <button class="inlarg" onclick="onChangeTxtSize(true)">
                     <img class="icon" src="ICONS/increase font - icon.png" alt="">
                 </button>
@@ -71,10 +72,17 @@
                 <button class="align-right" onclick="onAlignRight()">
                     <img class="icon" src="ICONS/align-to-right.png" alt="">
                 </button>
-            
+
             </div>
-            
-            <select name="" id=""></select>
+
+            <div class="stickers">
+                <button onclick="onAddNewSticker(1)"><img src="stickers/1.png" alt=""></button>
+                <button onclick="onAddNewSticker(2)"><img src="stickers/2.png" alt=""></button>
+                <button onclick="onAddNewSticker(3)"><img src="stickers/3.png" alt=""></button>
+                <button onclick="onAddNewSticker(4)"><img src="stickers/4.png" alt=""></button>
+                <button onclick="onAddNewSticker(5)"><img src="stickers/5.png" alt=""></button>
+                <button onclick="onAddNewSticker(6)"><img src="stickers/6.png" alt=""></button>
+            </div>
 
             <div class="share-and-import flex align-center">
                 <button class="Save" onclick="onSaveMeme()">
@@ -84,12 +92,13 @@
                     <i class="fa-solid fa-share"></i>
                 </button>
                 <button class="Download">
-                    <a href="#" onclick="onDownloadCanvas(this)" download="file-name"><i class="fa-solid fa-download"></i></a>
+                    <a href="#" onclick="onDownloadCanvas(this)" download="file-name"><i
+                            class="fa-solid fa-download"></i></a>
                 </button>
-                
+
             </div>
-            
-        </section>     
+
+        </section>
     </main>
 
     <section class="main-gallery-container grid">
@@ -120,4 +129,5 @@
     <script src="js/controllers/gallery-conroller.js"></script>
 
 </body>
+
 </html>

@@ -22,15 +22,20 @@ function renderMeme() {
     const imgSrc = getImgById(meme.selectedImgId)
     const img = new Image()
     img.src = imgSrc
+    
 
     img.onload = () => {
         drawImage(img)
         meme.lines.forEach((line, idx) => {
-            drawText(line)
-            const lineWidth = gCtx.measureText(line.txt).width
-            setLineWidth(lineWidth, idx)
+            console.log(line);
+            if ("txt" in line) {
+                drawText(line)
+                const lineWidth = gCtx.measureText(line.txt).width
+                setLineWidth(lineWidth, idx)
+            }else drawSticker(line)
+            
         })
-        drawRectText(meme.lines[meme.selectedLineIdx])
+        drawRect(meme.lines[meme.selectedLineIdx])
     }
 
 }
@@ -39,6 +44,12 @@ function drawImage(img) {
     gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width
     gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
 
+}
+
+function drawSticker(line) {
+    const sticker = new Image()
+    sticker.src = line.sticker
+    gCtx.drawImage(sticker, line.pos.x, line.pos.y, line.size, line.width)
 }
 
 function drawText({ txt, size, fillColor, strokeColor, pos, font }) {
@@ -55,8 +66,7 @@ function drawText({ txt, size, fillColor, strokeColor, pos, font }) {
     gCtx.strokeText(txt, pos.x, pos.y)
 }
 
-function drawRectText(line) {
-    console.log(line);
+function drawRect(line) {
     const lineWidth = line.width
     const lineHeight = line.size
 
@@ -95,6 +105,11 @@ function onChangeTxtSize(isIncrease) {
 
 function onAddNewLine() {
     addNewLine()
+    renderMeme()
+}
+
+function onAddNewSticker(idx) {
+    addNewSticker(`stickers/${idx}.png`)
     renderMeme()
 }
 

@@ -37,11 +37,29 @@
 }
 
 .actions-container select {
-    height: 3.5rem;
+    height: 3rem;
+    align-self: center;
 }
 
 .actions-container i {
     color: black;
     width: 100%;
     font-size: 1rem;
+}
+
+.actions-container .stickers {
+    display: grid;
+    grid-auto-flow: column;
+    height: 3.5rem;
+    border: 1px solid var(--clrPrimary);
+    place-items: center;
+}
+
+.actions-container .stickers button{
+   background-color: transparent;
+   border: none;
+}
+
+.actions-container .stickers img{
+    width: 80%;
 }

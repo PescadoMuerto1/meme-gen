@@ -137,6 +137,10 @@ function addNewLine() {
     gMeme.lines.push(_addLine())
 }
 
+function addNewSticker(sticker) {
+    gMeme.lines.push(_addStickerLine(sticker))
+}
+
 function isLineClicked(clickedPos) {
 
     return gMeme.lines.findIndex(line => {
@@ -168,7 +172,7 @@ function removeLine() {
     gMeme.lines.splice([gMeme.selectedLineIdx], 1)
 }
 
-function alignLeft(elCanvas) {
+function alignLeft() {
     const sLine = gMeme.lines[gMeme.selectedLineIdx]
     sLine.pos.x = 0
 }
@@ -217,3 +221,14 @@ function _addLine(txt = 'text here', size = 30, fillColor = 'white', strokeColor
     }
 }
 
+function _addStickerLine(sticker) {
+    return {
+        sticker,
+        size: 50,
+        width: 50,
+        pos: {
+            x: 50,
+            y: 50
+        }
+    }
+}
