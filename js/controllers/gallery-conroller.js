@@ -1,5 +1,12 @@
 'use strict'
 
+function onInit() {
+    renderGallery()
+    showEl('.main-gallery')
+    hideEl('.main-meme')
+    hideEl('.local-gallery')
+}
+
 function renderGallery() {
     const elGallery = document.querySelector('.main-gallery')
     const imgs = getImgs()
@@ -18,4 +25,5 @@ function onRandomMeme() {
     setRandomMeme()
     initCanvas()
     hideEl('.main-gallery')
+    hideEl('.local-gallery')
 }

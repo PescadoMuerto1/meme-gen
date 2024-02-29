@@ -1,4 +1,5 @@
 'use strict'
+
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
     { id: 2, url: 'img/2.jpg', keywords: ['funny', 'cat'] },
@@ -39,7 +40,6 @@ var gQuotes = [
     "Is this real life?"
 ]
 
-
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
@@ -59,11 +59,16 @@ var gMeme = {
         }
     ]
 }
+
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function getImgById(imgId) {
     const img = gImgs.find(img => img.id === imgId)
     return img.url
+}
+
+function setMeme(meme){
+    return gMeme = meme
 }
 
 function getMeme() {
@@ -134,20 +139,6 @@ function isLineClicked(clickedPos) {
     })
 }
 
-function _addLine(txt = 'write here', size = 30, fillColor = 'white', strokeColor = 'black', x = 100, y = 100, font = 'Impact') {
-    return {
-        txt,
-        size,
-        fillColor,
-        strokeColor,
-        pos: {
-            x,
-            y
-        },
-        font
-    }
-}
-
 function setLineWidth(width, lineIdx) {
     gMeme.lines[lineIdx].width = width
 }
@@ -163,7 +154,7 @@ function getLineDragged() {
 function moveLine(lineIdx, dx, dy) {
     gMeme.lines[lineIdx].pos.x += dx
     gMeme.lines[lineIdx].pos.y += dy
-
+    
     console.log(gMeme.lines[lineIdx].pos);
 }
 
@@ -188,5 +179,30 @@ function alignRight(elCanvas) {
 
 function setFont(sFont) {
     gMeme.lines[gMeme.selectedLineIdx].font = sFont
+}
+
+function saveMeme() {
+    const memes = loadFromStorage('memes')
+    gMeme.screenShot = gElCanvas.toDataURL()
+    if(!memes){ 
+        saveToStorage('memes', [gMeme])
+        return
+    } 
+    memes.push(gMeme)
+    saveToStorage('memes', memes)
+}
+
+function _addLine(txt = 'text here', size = 30, fillColor = 'white', strokeColor = 'black', x = 100, y = 100, font = 'Impact') {
+    return {
+        txt,
+        size,
+        fillColor,
+        strokeColor,
+        pos: {
+            x,
+            y
+        },
+        font
+    }
 }
 

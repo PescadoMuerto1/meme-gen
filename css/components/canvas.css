@@ -1,6 +1,6 @@
 .main-canvas {
     display: block;
-    border: 3px solid rgb(186, 22, 22);
+    border: 3px solid var(--clrPrimary);
 }
 
 

@@ -42,7 +42,7 @@ function drawImage(img) {
 }
 
 function drawText({ txt, size, fillColor, strokeColor, pos, font }) {
-
+    
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
 
@@ -53,7 +53,6 @@ function drawText({ txt, size, fillColor, strokeColor, pos, font }) {
 
     gCtx.fillText(txt, pos.x, pos.y)
     gCtx.strokeText(txt, pos.x, pos.y)
-
 }
 
 function drawRectText(line) {
@@ -122,6 +121,10 @@ function onAlignLeft() {
 function OnSelectFont(sFont) {
     setFont(sFont)
     renderMeme()
+}
+
+function onSaveMeme(){
+    saveMeme()
 }
 
 function resizeCanvas() {
