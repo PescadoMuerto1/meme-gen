@@ -13,3 +13,9 @@ function onImgSelect(elId) {
     initCanvas()
     hideEl('.main-gallery')
 }
+
+function onRandomMeme() {
+    setRandomMeme()
+    initCanvas()
+    hideEl('.main-gallery')
+}

@@ -22,33 +22,40 @@ var gImgs = [
     { id: 20, url: 'img/20.jpg', keywords: ['funny', 'cat'] },
     { id: 21, url: 'img/21.jpg', keywoZrds: ['funny', 'cat'] }]
 
+var gQuotes = [
+    "That's rough, buddy.",
+    "Ain't nobody got time for that!",
+    "I can't believe you've done this.",
+    "It's over 9000!",
+    "Do you know da wae?",
+    "But that's none of my business.",
+    "This is fine.",
+    "You had one job!",
+    "Hide the pain Harold.",
+    "Why you always lyin'?",
+    "Cash me ousside, how 'bout dat?",
+    "Bruh.",
+    "Oh lawd, he comin'.",
+    "Is this real life?"
+]
+
+
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
     isDrag: false,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
-            size: 30,
-            width: 0,
-            fillColor: 'red',
-            strokeColor: 'red',
-            pos: {
-                x: 0,
-                y: 50
-            }
-        },
-        {
-            txt: 'I dont like Falafel',
+            txt: 'text here',
             size: 30,
             width: 0,
             fillColor: 'white',
-            strokeColor: 'white',
+            strokeColor: 'black',
             pos: {
                 x: 0,
-                y: 400
+                y: 50
             },
-            // align:'center'
+            font: 'Impact'
         }
     ]
 }
@@ -70,6 +77,14 @@ function setLineTxt(txt) {
 
 function setImg(id) {
     gMeme.selectedImgId = id
+}
+
+function setRandomMeme() {
+    const imgId = gImgs[getRandomInt(0, gImgs.length)].id
+    const txtIdx = getRandomInt(0, gQuotes.length)
+
+    setImg(imgId)
+    gMeme.lines[0].txt = gQuotes[txtIdx]
 }
 
 function setLineFillColor(color) {
@@ -119,7 +134,7 @@ function isLineClicked(clickedPos) {
     })
 }
 
-function _addLine(txt = 'write here', size = 30, fillColor = 'white', strokeColor = 'white', x = 100, y = 100) {
+function _addLine(txt = 'write here', size = 30, fillColor = 'white', strokeColor = 'black', x = 100, y = 100, font = 'Impact') {
     return {
         txt,
         size,
@@ -128,7 +143,8 @@ function _addLine(txt = 'write here', size = 30, fillColor = 'white', strokeColo
         pos: {
             x,
             y
-        }
+        },
+        font
     }
 }
 
@@ -155,17 +171,22 @@ function removeLine() {
     gMeme.lines.splice([gMeme.selectedLineIdx], 1)
 }
 
-function alignLeft(elCanvas){
+function alignLeft(elCanvas) {
     const sLine = gMeme.lines[gMeme.selectedLineIdx]
     sLine.pos.x = 0
 }
 
-function alignCenter(elCanvas){
+function alignCenter(elCanvas) {
     const sLine = gMeme.lines[gMeme.selectedLineIdx]
-    sLine.pos.x = elCanvas.width/2 - sLine.width / 2
+    sLine.pos.x = elCanvas.width / 2 - sLine.width / 2
 }
 
-function alignRight(elCanvas){
+function alignRight(elCanvas) {
     const sLine = gMeme.lines[gMeme.selectedLineIdx]
     sLine.pos.x = elCanvas.width - sLine.width
 }
+
+function setFont(sFont) {
+    gMeme.lines[gMeme.selectedLineIdx].font = sFont
+}
+

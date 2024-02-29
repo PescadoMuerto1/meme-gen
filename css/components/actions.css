@@ -9,6 +9,7 @@
 
 .actions-container .txt-actions {
     background-color:var(--clrPrimary);
+    color: #ffffff;
     place-self: center;
     padding: 1em;
     gap: 0.5rem;

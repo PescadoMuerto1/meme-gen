@@ -17,7 +17,7 @@
                 <ul class="main-nav-list clean-list">
                     <li><a class="active" onclick="onInit()" href="#">gallery</a></li>
                     <li><a href="#">local storage</a></li>
-                    <li><a href="#">random</a></li>
+                    <li><a href="#" onclick="onRandomMeme()">random</a></li>
                 </ul>
             </nav>
             <i class="fa-solid fa-bars" onclick="onToggleMenu()"></i>
@@ -32,7 +32,7 @@
             <div class="txt-actions flex">
                 <input class="txt-input" type="text" onkeyup="onChangeTxt(value)">
                 <input type="color" onchange="onChangeStrokeColor(value, true)"></input>
-                <input type="color" onchange="onChangeFillColor(value, false)"></input>
+                <input type="color" value="#ffffff" onchange="onChangeFillColor(value, false)"></input>
             </div>
 
             <div class="basic-actions flex align-center">
@@ -47,8 +47,12 @@
                 </button>
             </div>
             
-            <select name="txt-font" class="txt-font">
-                <option value="">Please choose a font</option>
+            <select name="txt-font" class="txt-font" onchange="OnSelectFont(value)">
+                <option value="Impact">Impact</option>
+                <option value="Ruluko">Ruluko</option>
+                <option value="Kode Mono">Kode Mono</option>
+                <option value="PT Serif">PT Serif</option>
+                <option value="Kalam">Kalam</option>
             </select>
 
             <div class="size-and-align-actions flex space-between"> 

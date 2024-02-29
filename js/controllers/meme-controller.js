@@ -41,15 +41,14 @@ function drawImage(img) {
 
 }
 
-function drawText({ txt, size, fillColor, strokeColor, pos, align }) {
+function drawText({ txt, size, fillColor, strokeColor, pos, font }) {
 
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
 
     gCtx.fillStyle = fillColor
 
-    gCtx.font = `${size}px Arial`
-    // gCtx.textAlign = 'center'
+    gCtx.font = `${size}px ${font}`
     gCtx.textBaseline = 'hanging'
 
     gCtx.fillText(txt, pos.x, pos.y)
@@ -58,13 +57,13 @@ function drawText({ txt, size, fillColor, strokeColor, pos, align }) {
 }
 
 function drawRectText(line) {
-
-    const lineWidth = gCtx.measureText(line.txt).width
+    console.log(line);
+    const lineWidth = line.width
     const lineHeight = line.size
 
     gCtx.strokeStyle = 'black'
 
-    gCtx.strokeRect(line.pos.x, line.pos.y, lineWidth, lineHeight)
+    gCtx.strokeRect(line.pos.x -10, line.pos.y -5, lineWidth + 20, lineHeight + 10)
     console.log(line.pos.x, line.pos.y, lineHeight, lineWidth)
 }
 
@@ -117,6 +116,11 @@ function onAlignCenter() {
 
 function onAlignLeft() {
     alignLeft(gElCanvas)
+    renderMeme()
+}
+
+function OnSelectFont(sFont) {
+    setFont(sFont)
     renderMeme()
 }
 
