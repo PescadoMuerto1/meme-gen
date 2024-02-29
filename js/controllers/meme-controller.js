@@ -41,7 +41,7 @@ function drawImage(img) {
 
 }
 
-function drawText({ txt, size, fillColor, strokeColor, pos }) {
+function drawText({ txt, size, fillColor, strokeColor, pos, align }) {
 
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
@@ -58,7 +58,7 @@ function drawText({ txt, size, fillColor, strokeColor, pos }) {
 }
 
 function drawRectText(line) {
-    
+
     const lineWidth = gCtx.measureText(line.txt).width
     const lineHeight = line.size
 
@@ -66,6 +66,11 @@ function drawRectText(line) {
 
     gCtx.strokeRect(line.pos.x, line.pos.y, lineWidth, lineHeight)
     console.log(line.pos.x, line.pos.y, lineHeight, lineWidth)
+}
+
+function onRemoveLine() {
+    removeLine()
+    renderMeme()
 }
 
 function onChangeTxt(txt) {
@@ -84,7 +89,7 @@ function onChangeStrokeColor(color) {
 }
 
 function onChangeTxtSize(isIncrease) {
-    if(isIncrease) increaseLinesTxtSize()
+    if (isIncrease) increaseLinesTxtSize()
     else decreaseLinesTxtSize()
     renderMeme()
     return
@@ -100,11 +105,26 @@ function onMoveBetweenLines() {
     renderMeme()
 }
 
-function resizeCanvas() {
-	const elContainer = document.querySelector('.canvas-container')
+function onAlignRight() {
+    alignRight(gElCanvas)
+    renderMeme()
+}
 
-	gElCanvas.width = elContainer.clientWidth
-	gElCanvas.height = elContainer.offsetHeight
+function onAlignCenter() {
+    alignCenter(gElCanvas)
+    renderMeme()
+}
+
+function onAlignLeft() {
+    alignLeft(gElCanvas)
+    renderMeme()
+}
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+
+    gElCanvas.width = elContainer.clientWidth
+    gElCanvas.height = elContainer.offsetHeight
 }
 
 function onDownloadCanvas(elLink) {
@@ -115,27 +135,27 @@ function onDownloadCanvas(elLink) {
 }
 
 function addListeners() {
-	addMouseListeners()
-	addTouchListeners()
-	// window.addEventListener('resize', resizeCanvas)
+    addMouseListeners()
+    addTouchListeners()
+    // window.addEventListener('resize', resizeCanvas)
 }
 
 function addMouseListeners() {
-	gElCanvas.addEventListener('mousedown', onDown)
-	gElCanvas.addEventListener('mousemove', onMove)
-	gElCanvas.addEventListener('mouseup', onUp)
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
 }
 
 function addTouchListeners() {
-	gElCanvas.addEventListener('touchstart', onDown)
-	gElCanvas.addEventListener('touchmove', onMove)
-	gElCanvas.addEventListener('touchend', onUp)
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchend', onUp)
 }
 
 function onDown(ev) {
     gStartPos = getEvPos(ev)
 
-	if(isLineClicked(gStartPos) >= 0){
+    if (isLineClicked(gStartPos) >= 0) {
         gDraggedLineIdx = isLineClicked(getEvPos(ev))
         setLineDrag(gDraggedLineIdx, true)
         document.body.style.cursor = 'grabbing'
@@ -147,16 +167,19 @@ function onDown(ev) {
 }
 
 function onMove(ev) {
-	const isDrag = getLineDragged()
-	if (!isDrag) return
-	const pos = getEvPos(ev)
-	
-	const dx = pos.x - gStartPos.x
-	const dy = pos.y - gStartPos.y
-	moveLine(gDraggedLineIdx, dx, dy)
+    const isDrag = getLineDragged()
+    if (!isDrag) return
 
-	gStartPos = pos
-	renderMeme()
+    const pos = getEvPos(ev)
+
+    const dx = pos.x - gStartPos.x
+    const dy = pos.y - gStartPos.y
+
+    if (pos.x < 0 || pos.x > gElCanvas.width || pos.y < 0 || pos.y > gElCanvas.height) return
+    moveLine(gDraggedLineIdx, dx, dy)
+
+    gStartPos = pos
+    renderMeme()
 }
 
 function onUp() {
@@ -165,28 +188,28 @@ function onUp() {
 }
 
 function resizeCanvas() {
-	const elContainer = document.querySelector('.canvas-container')
+    const elContainer = document.querySelector('.canvas-container')
 
-	gElCanvas.width = elContainer.offsetWidth
-	gElCanvas.height = elContainer.offsetHeight
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
 }
 
 function getEvPos(ev) {
-	let pos = {
-		x: ev.offsetX,
-		y: ev.offsetY,
-	}
+    let pos = {
+        x: ev.offsetX,
+        y: ev.offsetY,
+    }
 
-	if (TOUCH_EVENTS.includes(ev.type)) {
-		ev.preventDefault()         
-		ev = ev.changedTouches[0]  
+    if (TOUCH_EVENTS.includes(ev.type)) {
+        ev.preventDefault()
+        ev = ev.changedTouches[0]
 
-		pos = {
-			x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-			y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-		}
-	}
-	return pos
+        pos = {
+            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+        }
+    }
+    return pos
 }
 
 function onToggleMenu() {

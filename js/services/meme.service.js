@@ -47,7 +47,8 @@ var gMeme = {
             pos: {
                 x: 0,
                 y: 400
-            }
+            },
+            // align:'center'
         }
     ]
 }
@@ -73,7 +74,7 @@ function setImg(id) {
 
 function setLineFillColor(color) {
     const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx].fillColor = color 
+    gMeme.lines[lineIdx].fillColor = color
 }
 
 function setLineStrokeColor(color) {
@@ -112,9 +113,9 @@ function addNewLine() {
 
 function isLineClicked(clickedPos) {
 
-	return gMeme.lines.findIndex(line => {
+    return gMeme.lines.findIndex(line => {
         return clickedPos.x > line.pos.x && clickedPos.x < line.pos.x + line.width
-        && clickedPos.y > line.pos.y && clickedPos.y < line.pos.y + line.size
+            && clickedPos.y > line.pos.y && clickedPos.y < line.pos.y + line.size
     })
 }
 
@@ -144,8 +145,27 @@ function getLineDragged() {
 }
 
 function moveLine(lineIdx, dx, dy) {
-	gMeme.lines[lineIdx].pos.x += dx
-	gMeme.lines[lineIdx].pos.y += dy
+    gMeme.lines[lineIdx].pos.x += dx
+    gMeme.lines[lineIdx].pos.y += dy
 
     console.log(gMeme.lines[lineIdx].pos);
+}
+
+function removeLine() {
+    gMeme.lines.splice([gMeme.selectedLineIdx], 1)
+}
+
+function alignLeft(elCanvas){
+    const sLine = gMeme.lines[gMeme.selectedLineIdx]
+    sLine.pos.x = 0
+}
+
+function alignCenter(elCanvas){
+    const sLine = gMeme.lines[gMeme.selectedLineIdx]
+    sLine.pos.x = elCanvas.width/2 - sLine.width / 2
+}
+
+function alignRight(elCanvas){
+    const sLine = gMeme.lines[gMeme.selectedLineIdx]
+    sLine.pos.x = elCanvas.width - sLine.width
 }
