@@ -191,9 +191,9 @@ function setFont(sFont) {
     gMeme.lines[gMeme.selectedLineIdx].font = sFont
 }
 
-function saveMeme() {
+function saveMeme(imgUrl) {
     const memes = loadFromStorage('memes')
-    gMeme.screenShot = gElCanvas.toDataURL()
+    gMeme.screenShot = imgUrl
     if (!memes) {
         saveToStorage('memes', [gMeme])
         return

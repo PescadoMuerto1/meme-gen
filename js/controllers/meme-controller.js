@@ -4,6 +4,7 @@ let gElCanvas
 let gCtx
 let gStartPos
 let gDraggedLineIdx
+var gIsCleanVersion = false
 
 const TOUCH_EVENTS = ['touchstart', 'touchmove', 'touchend']
 
@@ -22,22 +23,20 @@ function renderMeme() {
     const imgSrc = getImgById(meme.selectedImgId)
     const img = new Image()
     img.src = imgSrc
-    
 
     img.onload = () => {
         drawImage(img)
+
         meme.lines.forEach((line, idx) => {
-            console.log(line);
             if ("txt" in line) {
                 drawText(line)
                 const lineWidth = gCtx.measureText(line.txt).width
                 setLineWidth(lineWidth, idx)
-            }else drawSticker(line)
-            
+            } else drawSticker(line)
         })
-        drawRect(meme.lines[meme.selectedLineIdx])
-    }
 
+        if (!gIsCleanVersion) drawRect(meme.lines[meme.selectedLineIdx])
+    }
 }
 
 function drawImage(img) {
@@ -53,7 +52,7 @@ function drawSticker(line) {
 }
 
 function drawText({ txt, size, fillColor, strokeColor, pos, font }) {
-    
+
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
 
@@ -72,8 +71,7 @@ function drawRect(line) {
 
     gCtx.strokeStyle = 'black'
 
-    gCtx.strokeRect(line.pos.x -10, line.pos.y -5, lineWidth + 20, lineHeight + 10)
-    console.log(line.pos.x, line.pos.y, lineHeight, lineWidth)
+    gCtx.strokeRect(line.pos.x - 10, line.pos.y - 5, lineWidth + 20, lineHeight + 10)
 }
 
 function onRemoveLine() {
@@ -138,8 +136,13 @@ function OnSelectFont(sFont) {
     renderMeme()
 }
 
-function onSaveMeme(){
-    saveMeme()
+function onSaveMeme() {
+    generateMeme()
+    setTimeout(() => {
+        saveMeme(gElCanvas.toDataURL('png'))
+        gIsCleanVersion = false
+        renderMeme()
+    }, 0)
 }
 
 function resizeCanvas() {
@@ -149,18 +152,60 @@ function resizeCanvas() {
     gElCanvas.height = elContainer.offsetHeight
 }
 
-function onDownloadCanvas(elLink) {
-    elLink.download = 'my-meme'
+function generateMeme() {
+    gIsCleanVersion = true
+    renderMeme()
+}
 
-    const dataUrl = gElCanvas.toDataURL()
-    elLink.href = dataUrl
+function onDownloadMeme(ev) {
+    generateMeme()
+    setTimeout(() => {
+        const dataUrl = gElCanvas.toDataURL('png')
+        const link = document.createElement('a')
+        link.href = dataUrl
+        link.download = 'my-meme'
+        link.click()
+        gIsCleanVersion = false
+        renderMeme()
+    }, 0)
+}
+
+function shareMeme(ev) {
+    generateMeme()
+    setTimeout(async () => {
+        const data = gElCanvas.toDataURL('image/jpeg')
+        gIsCleanVersion = false
+        renderMeme()
+        try {
+            const response = await fetch(data)
+            const blob = await response.blob()
+            const file = new File([blob], 'rick.jpg', { type: blob.type });
+
+            await navigator.share({
+                title: "my-meme",
+                files: [file],
+            })
+        } catch (err) {
+            console.error("Share failed:", err.message)
+        }
+    }, 0);
+
 }
 
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
+    addClickListeners()
     // window.addEventListener('resize', resizeCanvas)
 }
+
+function addClickListeners() {
+    const elDownload = document.querySelector('.download')
+    const elShare = document.querySelector('.share')
+    elDownload.addEventListener('click', onDownloadMeme)
+    elShare.addEventListener('click', shareMeme)
+}
+
 
 function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', onDown)
