@@ -51,7 +51,7 @@ function drawImage(img) {
 function drawSticker(line) {
     const sticker = new Image()
     sticker.src = line.sticker
-    gCtx.drawImage(sticker, line.pos.x, line.pos.y, line.size, line.width)
+    gCtx.drawImage(sticker, line.pos.x, line.pos.y, line.width, line.size )
 }
 
 function drawText({ txt, size, fillColor, strokeColor, pos, font }) {
@@ -98,9 +98,22 @@ function onChangeStrokeColor(color) {
     renderMeme()
 }
 
+function onChangeSize(isIncrease) {
+    const sLine = getSelectedLine()
+    if("txt" in sLine) onChangeTxtSize(isIncrease)
+    else onChangeStickerSize(isIncrease)
+}
+
 function onChangeTxtSize(isIncrease) {
     if (isIncrease) increaseLinesTxtSize()
     else decreaseLinesTxtSize()
+    renderMeme()
+    return
+}
+
+function onChangeStickerSize(isIncrease) {
+    if (isIncrease) increaseLinesStickerSize()
+    else decreaseLinesStickerSize()
     renderMeme()
     return
 }
@@ -114,6 +127,7 @@ function onAddNewLine() {
 
 function onAddNewSticker(idx) {
     addNewSticker(`stickers/${idx}.png`)
+    setSelectedLineIdx()
     renderMeme()
 }
 

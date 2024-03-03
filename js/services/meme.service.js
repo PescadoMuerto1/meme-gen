@@ -132,6 +132,18 @@ function decreaseLinesTxtSize() {
     line.size -= 5
 }
 
+function increaseLinesStickerSize() {
+    const line = getSelectedLine()
+    line.width += 5
+    line.size = (line.width / line.ratio)
+}
+
+function decreaseLinesStickerSize() {
+    const line = getSelectedLine()
+    line.width -= 5
+    line.size = (line.width / line.ratio)
+}
+
 function getImgs() {
     return gImgs
 }
@@ -232,10 +244,16 @@ function _addLine(txt = '', size = 30, fillColor = '#ffffff', strokeColor = 'bla
 }
 
 function _addStickerLine(sticker) {
+    const img = new Image()
+    img.src = sticker
+    const width = img.naturalWidth
+    const height = img.naturalHeight
+
     return {
         sticker,
-        size: 50,
-        width: 50,
+        size: height / 5,
+        width: width / 5,
+        ratio: width / height,
         pos: {
             x: 50,
             y: 50
