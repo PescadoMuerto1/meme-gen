@@ -46,14 +46,14 @@ var gMeme = {
     isDrag: false,
     lines: [
         {
-            txt: 'text here',
+            txt: '',
             size: 30,
             width: 0,
-            fillColor: 'white',
+            fillColor: '#ffffff',
             strokeColor: 'black',
             pos: {
-                x: 0,
-                y: 50
+                x: 150,
+                y: 100
             },
             font: 'Impact'
         }
@@ -114,7 +114,7 @@ function moveBetweenLines() {
     else setSelectedLineIdx(0)
 }
 
-function setSelectedLineIdx(lineIdx) {
+function setSelectedLineIdx(lineIdx = gMeme.lines.length-1) {
     gMeme.selectedLineIdx = lineIdx
 }
 
@@ -212,7 +212,7 @@ function getSelectedLine() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-function _addLine(txt = 'text here', size = 30, fillColor = 'white', strokeColor = 'black', x = 100, y = 100, font = 'Impact') {
+function _addLine(txt = '', size = 30, fillColor = '#ffffff', strokeColor = 'black', x = 150, y = 100, font = 'Impact') {
     return {
         txt,
         size,

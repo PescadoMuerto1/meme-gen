@@ -30,8 +30,11 @@ function renderMeme() {
         meme.lines.forEach((line, idx) => {
             if ("txt" in line) {
                 drawText(line)
-                const lineWidth = gCtx.measureText(line.txt).width
+
+                let lineWidth = gCtx.measureText(line.txt).width
+                if (!line.txt) lineWidth = gCtx.measureText('text here').width
                 setLineWidth(lineWidth, idx)
+
             } else drawSticker(line)
         })
 
@@ -52,6 +55,7 @@ function drawSticker(line) {
 }
 
 function drawText({ txt, size, fillColor, strokeColor, pos, font }) {
+    if (!txt) txt = 'text here'
 
     gCtx.lineWidth = 2
     gCtx.strokeStyle = strokeColor
@@ -103,7 +107,9 @@ function onChangeTxtSize(isIncrease) {
 
 function onAddNewLine() {
     addNewLine()
+    setSelectedLineIdx()
     renderMeme()
+    renderSettings()
 }
 
 function onAddNewSticker(idx) {
@@ -114,6 +120,7 @@ function onAddNewSticker(idx) {
 function onMoveBetweenLines() {
     moveBetweenLines()
     renderMeme()
+    renderSettings()
 }
 
 function onAlignRight() {
@@ -228,6 +235,7 @@ function onDown(ev) {
 
         setSelectedLineIdx(gDraggedLineIdx)
         renderMeme()
+        renderSettings()
     }
     return
 }
@@ -282,6 +290,11 @@ function onToggleMenu() {
     document.body.classList.toggle('menu-open')
 }
 
-function setChanges() {
-    
+function renderSettings() {
+    const sLine = getSelectedLine()
+    if (sLine.sticker) return
+    document.querySelector('.txt-input').value = sLine.txt
+    document.querySelector('.stroke-color').value = sLine.strokeColor
+    document.querySelector('.fill-color').value = sLine.fillColor
+    document.querySelector('.txt-font').value = sLine.font
 }
