@@ -206,7 +206,6 @@ function addClickListeners() {
     elShare.addEventListener('click', shareMeme)
 }
 
-
 function addMouseListeners() {
     gElCanvas.addEventListener('mousedown', onDown)
     gElCanvas.addEventListener('mousemove', onMove)
@@ -281,4 +280,8 @@ function getEvPos(ev) {
 
 function onToggleMenu() {
     document.body.classList.toggle('menu-open')
+}
+
+function setChanges() {
+    
 }

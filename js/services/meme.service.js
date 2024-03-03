@@ -82,8 +82,8 @@ function getOptions() {
 }
 
 function setLineTxt(txt) {
-    const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx].txt = txt
+    const sLine = getSelectedLine()
+    sLine.txt = txt
 }
 
 function setImg(id) {
@@ -104,8 +104,8 @@ function setLineFillColor(color) {
 }
 
 function setLineStrokeColor(color) {
-    const lineIdx = gMeme.selectedLineIdx
-    gMeme.lines[lineIdx].strokeColor = color
+    const sLine = getSelectedLine()
+    sLine.strokeColor = color
 }
 
 function moveBetweenLines() {
@@ -116,17 +116,16 @@ function moveBetweenLines() {
 
 function setSelectedLineIdx(lineIdx) {
     gMeme.selectedLineIdx = lineIdx
-    console.log(gMeme.selectedLineIdx);
 }
 
 function increaseLinesTxtSize() {
-    const sLine = gMeme.selectedLineIdx
-    gMeme.lines[sLine].size += 5
+    const line = getSelectedLine()
+    line.size += 5
 }
 
 function decreaseLinesTxtSize() {
-    const sLine = gMeme.selectedLineIdx
-    gMeme.lines[sLine].size -= 5
+    const line = getSelectedLine()
+    line.size -= 5
 }
 
 function getImgs() {
@@ -164,8 +163,6 @@ function getLineDragged() {
 function moveLine(lineIdx, dx, dy) {
     gMeme.lines[lineIdx].pos.x += dx
     gMeme.lines[lineIdx].pos.y += dy
-
-    console.log(gMeme.lines[lineIdx].pos);
 }
 
 function removeLine() {
@@ -173,22 +170,23 @@ function removeLine() {
 }
 
 function alignLeft() {
-    const sLine = gMeme.lines[gMeme.selectedLineIdx]
+    const sLine = getSelectedLine()
     sLine.pos.x = 0
 }
 
 function alignCenter(elCanvas) {
-    const sLine = gMeme.lines[gMeme.selectedLineIdx]
+    const sLine = getSelectedLine()
     sLine.pos.x = elCanvas.width / 2 - sLine.width / 2
 }
 
 function alignRight(elCanvas) {
-    const sLine = gMeme.lines[gMeme.selectedLineIdx]
+    const sLine = getSelectedLine()
     sLine.pos.x = elCanvas.width - sLine.width
 }
 
 function setFont(sFont) {
-    gMeme.lines[gMeme.selectedLineIdx].font = sFont
+    const sLine = getSelectedLine()
+    sLine.font = sFont
 }
 
 function saveMeme(imgUrl) {
@@ -203,12 +201,15 @@ function saveMeme(imgUrl) {
 }
 
 function filterGallery(keyWord) {
-    console.log(keyWord);
     return gImgs.filter(img => img.keywords.includes(keyWord.toLowerCase()))
 }
 
 function addImg(img) {
     gImgs.unshift(_addImg(img))
+}
+
+function getSelectedLine() {
+    return gMeme.lines[gMeme.selectedLineIdx]
 }
 
 function _addLine(txt = 'text here', size = 30, fillColor = 'white', strokeColor = 'black', x = 100, y = 100, font = 'Impact') {
@@ -238,7 +239,5 @@ function _addStickerLine(sticker) {
 }
 
 function _addImg(url){
-    console.log(url);
-
     return { id: getRandomInt(500,1000), url, keywords: ['funny', 'cat'] }
 }
