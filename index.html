@@ -31,9 +31,9 @@
         </div>
         <section class="actions-container actions-layout">
             <div class="txt-actions flex">
-                <input class="txt-input" type="text" value="text here" onkeyup="onChangeTxt(value)">
-                <input type="color" onchange="onChangeStrokeColor(value, true)"></input>
-                <input type="color" value="#ffffff" onchange="onChangeFillColor(value, false)"></input>
+                <input class="txt-input" type="text" value="" onkeyup="onChangeTxt(value)" placeholder="text here">
+                <input type="color" oninput="onChangeStrokeColor(value, true)"></input>
+                <input type="color" value="#ffffff" oninput="onChangeFillColor(value, false)"></input>
             </div>
 
             <div class="basic-actions flex align-center">
