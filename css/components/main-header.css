@@ -39,8 +39,3 @@
 .main-header .main-nav-list a:hover {
     color: var(--clrPrimary-4);
 }
-
-
-.main-header .main-nav-list a.active {
-    text-decoration: underline;
-}

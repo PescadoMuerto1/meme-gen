@@ -17,6 +17,6 @@ main {
    
 }
 
-.icon {
+.icon, button{
     cursor: pointer;
 }
