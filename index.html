@@ -10,14 +10,14 @@
 </head>
 
 <body class="main-layout" onload="onInit()">
-    <header class="main-header full main-layout">
+    <header class="main-header full">
         <div class="logo-and-nav flex space-between align-center">
-            <div class="logo">memeGen</div>
+            <div class="logo">memegen</div>
             <nav class="main-nav">
                 <i class="fa-solid fa-x" onclick="onToggleMenu()"></i>
                 <ul class="main-nav-list clean-list">
                     <li><a class="gallery-nav" onclick="onInit()" href="#">gallery</a></li>
-                    <li><a class="local-nav" onclick="onInitLocal()" href="#">local storage</a></li>
+                    <li><a class="local-nav" onclick="onInitLocal()" href="#">saved memes</a></li>
                     <li><a class="random-nav" href="#" onclick="onRandomMeme()">random</a></li>
                 </ul>
             </nav>
@@ -105,7 +105,7 @@
                 <input class="input-list" list="search-list" placeholder="Search" required>
                 <datalist id="search-list"></datalist>
                 <button type="submit" class="search-btn">
-                    <img src="ICONS/search-icon.png" alt="">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
                 </button>
             </form>
             <!-- <div class="most-searched"></div> -->

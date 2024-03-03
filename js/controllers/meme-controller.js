@@ -73,7 +73,7 @@ function drawRect(line) {
     const lineWidth = line.width
     const lineHeight = line.size
 
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = '#FEECE2'
 
     gCtx.strokeRect(line.pos.x - 10, line.pos.y - 5, lineWidth + 20, lineHeight + 10)
 }

@@ -11,12 +11,15 @@ html {
 body {
     margin: 0;
     background-color: var(--clrPrimary);
+    color: var(--clrSecondary);
 }
 
 main {
    
 }
 
-.icon, button{
+button{
     cursor: pointer;
+    border: 2px solid var(--clrSecondary-1);
+    background-color: transparent;
 }

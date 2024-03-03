@@ -9,6 +9,7 @@
 .meme-layout {
     display: grid;
     grid-auto-flow: row;
+    place-items: center;
 }
 
 .meme-layout .canvas-container {
@@ -25,5 +26,6 @@
 }
 
 .gallery-layout {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
 }

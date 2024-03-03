@@ -228,7 +228,7 @@ function getSelectedLine() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-function _addLine(txt = '', size = 30, fillColor = '#ffffff', strokeColor = 'black', x = 100, y = 100, font = 'Impact') {
+function _addLine(txt = '', size = 30, fillColor = '#ffffff', strokeColor = 'black', x = 20, y = 100, font = 'Impact') {
     
     return {
         txt,

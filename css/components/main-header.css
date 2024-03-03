@@ -1,25 +1,22 @@
 .main-header {
-    margin: 0.5rem;
-    background-color: var(--clrSecondary);
-    color: var(--primary-4);
-    border-radius: 3em;
-    margin-block-end: 2rem;
-    padding-inline: 3rem;
+    color: var(--clrSecondary);
+    padding-inline: 1.5em;
+}
+
+.main-header i {
+    font-size: 2em;
 }
 
 .logo {
-    color: var(--primary--1);
-    /* font-family: inconsolata, monospace; */
-    font-size: 2.5em;
+    display: flex;
+    font-size: 2.5rem;
     letter-spacing: 0.2em;
-    padding-inline: 2rem;
-    padding-block: 1.5rem;
+    font-family: "Fasthand";
 }
 
 .main-header .main-nav-list {
     display: flex;
     gap: 3rem;
-    padding-inline-end: 2rem;
 }
 
 .main-header .main-nav-list a {
@@ -37,5 +34,6 @@
 
 
 .main-header .main-nav-list a:hover {
-    color: var(--clrPrimary-4);
+    scale: 1.2;
+    transition: scale 0.5s;
 }

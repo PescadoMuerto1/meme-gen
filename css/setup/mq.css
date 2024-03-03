@@ -49,10 +49,24 @@
         grid-template-columns: 1fr 1000px 1fr;
     }
 
+    .main-header {
+        margin-inline: 3em;
+        margin-block-end: 1em;
+        border-radius: 3em;
+    }
+
     .main-header i {
         display: none;
     }
 
+    .logo {
+        display: flex;
+        font-size: 3.5rem;
+        letter-spacing: 0.3em;
+        padding-block-end: 0.3em;
+        font-family: "Fasthand";
+    }
+    
     .main-layout>*:not(.full) {
         grid-column: 2;
     }
@@ -85,6 +99,15 @@
     }    
 
     .gallery-layout {
-        grid-template-columns: repeat(4, 1fr); 
+        grid-template-columns: repeat(3, 1fr); 
+    }
+
+    .canvas-container {
+        margin-block-start: 0;
+        width: 90%;
+    }
+
+    .main-meme {
+        margin-block-start: 15px;
     }
 }

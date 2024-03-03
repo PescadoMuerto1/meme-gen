@@ -1,6 +1,7 @@
 .actions-container {
-    height: 71Vh;
+    height: 95%;
     gap: 1rem;
+    padding-block: 40px;
 }
 
 .actions-container .icon {
@@ -8,7 +9,7 @@
 }
 
 .actions-container .txt-actions {
-    background-color:var(--clrPrimary);
+    background-color: var(--clrSecondary-1);
     color: #ffffff;
     place-self: center;
     padding: 1em;
@@ -16,14 +17,16 @@
     width: 100%;
 }
 
-.actions-container input{
+.actions-container input {
     height: 2rem;
-    width: 2rem;
     border: none;
+    background-color: transparent;
 }
 
 .actions-container .txt-input {
     flex-grow: 1;
+    border-bottom: 2px solid var(--clrSecondary);
+    outline: none;
 }
 
 .actions-container button {
@@ -31,7 +34,8 @@
     width: 3.7rem;
 }
 
-.actions-container .basic-actions, .share-and-import {
+.actions-container .basic-actions,
+.share-and-import {
     justify-content: center;
     gap: 1.3rem;
 }
@@ -39,6 +43,8 @@
 .actions-container select {
     height: 3rem;
     align-self: center;
+    background-color: transparent;
+    border: 2px solid var(--clrSecondary-1);
 }
 
 .actions-container i {
@@ -51,15 +57,15 @@
     display: grid;
     grid-auto-flow: column;
     height: 3.5rem;
-    border: 1px solid var(--clrPrimary);
+    border: 2px solid var(--clrSecondary-1);
     place-items: center;
 }
 
-.actions-container .stickers button{
-   background-color: transparent;
-   border: none;
+.actions-container .stickers button {
+    background-color: transparent;
+    border: none;
 }
 
-.actions-container .stickers img{
-    width: 80%;
+.actions-container .stickers img {
+    width: 60%;
 }

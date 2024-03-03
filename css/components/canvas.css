@@ -1,5 +1,10 @@
 .main-canvas {
     display: block;
-    border: 3px solid var(--clrPrimary);
+    border: 3px solid var(--clrSecondary-1);
     width: 100%;
+}
+
+.canvas-container {
+    margin-block-start: 20px;
+    width: 80%;
 }

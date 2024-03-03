@@ -2,14 +2,15 @@
    /* PALLETE */
    --clrPrimary3: #1e1e1e;
    --clrPrimary2: #292929;
-   --clrPrimary1: #4f4e4e;
-   --clrPrimary: #606060;
-   --clrPrimary-1: #818181;
+   --clrPrimary1: #FFBE98;
+   --clrPrimary: #FEECE2;
+   --clrPrimary-1: #265073;
    --clrPrimary-2: #c2c1c1;
    --clrPrimary-3: #f8f8f8;
    --clrPrimary-4: #ffffff;
 
-   --clrSecondary: #169f9c;
+   --clrSecondary: #efa981;
+   --clrSecondary-1: #FEECE2;
    
 
    /* layout */
