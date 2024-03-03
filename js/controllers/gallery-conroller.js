@@ -25,6 +25,7 @@ function renderOptions() {
 
 function onImgSelect(elId) {
     setImg(elId)
+    cleanLines()
     initCanvas()
     hideEl('.main-gallery-container')
 }

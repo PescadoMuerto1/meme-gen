@@ -95,7 +95,11 @@ function setRandomMeme() {
     const txtIdx = getRandomInt(0, gQuotes.length)
 
     setImg(imgId)
-    gMeme.lines[0].txt = gQuotes[txtIdx]
+    gMeme.lines = [_addLine(gQuotes[txtIdx])]
+}
+
+function cleanLines() {
+    gMeme.lines = [_addLine()]
 }
 
 function setLineFillColor(color) {
@@ -114,7 +118,7 @@ function moveBetweenLines() {
     else setSelectedLineIdx(0)
 }
 
-function setSelectedLineIdx(lineIdx = gMeme.lines.length-1) {
+function setSelectedLineIdx(lineIdx = gMeme.lines.length - 1) {
     gMeme.selectedLineIdx = lineIdx
 }
 
@@ -212,7 +216,8 @@ function getSelectedLine() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
 
-function _addLine(txt = '', size = 30, fillColor = '#ffffff', strokeColor = 'black', x = 150, y = 100, font = 'Impact') {
+function _addLine(txt = '', size = 30, fillColor = '#ffffff', strokeColor = 'black', x = 100, y = 100, font = 'Impact') {
+    
     return {
         txt,
         size,
@@ -238,6 +243,6 @@ function _addStickerLine(sticker) {
     }
 }
 
-function _addImg(url){
-    return { id: getRandomInt(500,1000), url, keywords: ['funny', 'cat'] }
+function _addImg(url) {
+    return { id: getRandomInt(500, 1000), url, keywords: ['funny', 'cat'] }
 }
